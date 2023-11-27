@@ -24,7 +24,6 @@ exports.handler = async (event, context) => {
 
     try {
         const response = await fetch(
-            // `/.netlify/functions/proxy?url=https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&units=${units}&appid=${appid}`
             `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&units=${units}&appid=${appid}`
         );
 
