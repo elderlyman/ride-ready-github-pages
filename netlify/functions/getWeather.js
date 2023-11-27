@@ -7,6 +7,11 @@ exports.handler = async (event, context) => {
     const exclude = event.queryStringParameters.exclude;
     const units = event.queryStringParameters.units;
 
+
+    if (!weatherLocation || !exclude || !units || !appid) {
+        throw new Error('Missing required parameters.');
+    }
+
     try {
         const response = await fetch(
             `/.netlify/functions/proxy?url=https://api.openweathermap.org/data/2.5/onecall?${weatherLocation}&exclude=${exclude}&units=${units}&appid=${appid}`
