@@ -9,7 +9,15 @@ exports.handler = async (event, context) => {
 
 
     if (!weatherLocation || !exclude || !units || !appid) {
-        throw new Error('Missing required parameters.');
+
+        throw new Error('Missing required parameters.'
+            //show missig parameters in error message
+            + ' weatherLocation: ' + weatherLocation
+            + ' exclude: ' + exclude
+            + ' units: ' + units
+            + ' appid: ' + appid
+        );
+
     }
 
     try {
