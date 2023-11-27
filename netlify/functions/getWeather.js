@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
     const units = event.queryStringParameters.units;
 
 
-    if (!weatherLocation || !exclude || !units || !appid) {
+    if (!lat || !lon || !exclude || !units || !appid) {
 
         throw new Error('Missing required parameters.'
             //show missig parameters in error message
