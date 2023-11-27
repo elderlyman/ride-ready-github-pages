@@ -21,7 +21,9 @@ import {
 const WeatherEventsTable = () => {
     const [eventsWithWeather, setEventsWithWeather] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [weatherLocation, setWeatherLocation] = useState(`lat=42.3601&lon=-71.0589`); // Default location is Boston
+    // const [weatherLocation, setWeatherLocation] = useState(`lat=42.3601&lon=-71.0589`); // Default location is Boston
+    const [lat, setLat] = useState('42.3601');
+    const [lon, setLon] = useState('-71.0589');
     const [eventLocation, setEventLocation] = useState('boston');
     const [clickedLocationButton, setClickedLocationButton] = useState('boston');
     const [clickedRangeButton, setClickedRangeButton] = useState('2 Days');
@@ -58,11 +60,15 @@ const WeatherEventsTable = () => {
     const handleLocationChange = (newLocation) => {
         if (newLocation === 'boston') {
             setEventLocation('boston');
-            setWeatherLocation(`lat=42.3601&lon=-71.0589`);
+            // setWeatherLocation(`lat=42.3601&lon=-71.0589`);
+            setLat('42.3601');
+            setLon('-71.0589');
             setBestVenues(bestBostonVenues);
         } else if (newLocation === 'new orleans') {
             setEventLocation('new orleans');
-            setWeatherLocation(`lat=29.9511&lon=-90.0715`);
+            // setWeatherLocation(`lat=29.9511&lon=-90.0715`);
+            setLat('29.9511');
+            setLon('-90.0715');
             setBestVenues(bestNewOrleansVenues);
         }
         setClickedLocationButton(newLocation);
@@ -97,7 +103,7 @@ const WeatherEventsTable = () => {
         const fetchData = async () => {
             const siteName = 'admirable-seahorse-918a72';
             const helloFunctionUrl = `https://${siteName}.netlify.app/.netlify/functions/hello`;
-            const getWeatherFunctionUrl = `https://${siteName}.netlify.app/.netlify/functions/getWeather?${weatherLocation}&exclude=minutely,daily&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_APP_ID}`;
+            const getWeatherFunctionUrl = `https://${siteName}.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&exclude=minutely,daily&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_APP_ID}`;
             const getSeatGeekEventsFunctionUrl = `https://${siteName}.netlify.app/.netlify/functions/getSeatGeekEvents?client_id=${process.env.REACT_APP_SEATGEEK_CLIENT_ID}&venue.city=${eventLocation}&datetime_local.lte=${daysFromNow}&per_page=1000`;
 
             // Making an HTTP GET request to the Netlify function endpoint
@@ -161,7 +167,7 @@ const WeatherEventsTable = () => {
         };
 
         fetchData();
-    }, [eventLocation, timeRange, bestVenues, weatherLocation]);
+    }, [eventLocation, timeRange, bestVenues, lat, lon]);
 
     return (
         <div>

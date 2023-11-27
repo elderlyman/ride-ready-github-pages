@@ -2,7 +2,8 @@
 import fetch from 'node-fetch'
 exports.handler = async (event, context) => {
 
-    const weatherLocation = event.queryStringParameters.weatherLocation;
+    const lat = event.queryStringParameters.lat;
+    const lon = event.queryStringParameters.lon;
     const appid = event.queryStringParameters.appid;
     const exclude = event.queryStringParameters.exclude;
     const units = event.queryStringParameters.units;
@@ -12,7 +13,8 @@ exports.handler = async (event, context) => {
 
         throw new Error('Missing required parameters.'
             //show missig parameters in error message
-            + ' weatherLocation: ' + weatherLocation
+            + ' lat: ' + lat
+            + ' lon: ' + lon
             + ' exclude: ' + exclude
             + ' units: ' + units
             + ' appid: ' + appid
@@ -22,7 +24,7 @@ exports.handler = async (event, context) => {
 
     try {
         const response = await fetch(
-            `/.netlify/functions/proxy?url=https://api.openweathermap.org/data/2.5/onecall?${weatherLocation}&exclude=${exclude}&units=${units}&appid=${appid}`
+            `/.netlify/functions/proxy?url=https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&units=${units}&appid=${appid}`
         );
 
         return {
