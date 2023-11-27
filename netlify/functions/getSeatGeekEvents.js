@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
     try {
 
         const response = await fetch(
-            `https://api.seatgeek.com/2/events?client_id=${client_id}&venue.city=${eventLocation}&datetime_local.lte=${daysFromNow}&per_page=1000`
+            `/.netlify/functions/proxy?url=https://api.seatgeek.com/2/events?client_id=${client_id}&venue.city=${eventLocation}&datetime_local.lte=${daysFromNow}&per_page=1000`
         );
 
         return {
