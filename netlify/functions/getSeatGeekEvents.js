@@ -2,7 +2,7 @@
 import fetch from 'node-fetch'
 exports.handler = async (event, context) => {
 
-    const eventLocation = event.queryStringParameters.venue.city;
+    const eventLocation = event.queryStringParameters.eventLocation;
     const daysFromNow = event.queryStringParameters.daysFromNow;
     const client_id = event.queryStringParameters.client_id;
 
@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
     try {
 
         const response = await fetch(
-            `https://api.seatgeek.com/2/events?client_id=${client_id}&venue.city=${eventLocation}&datetime_local.lte=${daysFromNow}&per_page=1000`
+            `https://api.seatgeek.com/2/events?client_id=${client_id}&eventLocation=${eventLocation}&datetime_local.lte=${daysFromNow}&per_page=1000`
         );
 
         return {
