@@ -2,8 +2,8 @@
 import fetch from 'node-fetch'
 exports.handler = async (event, context) => {
 
-    const eventLocation = event.queryStringParameters.venue_city;
-    const daysFromNow = event.queryStringParameters.datetime_local_lte;
+    const eventLocation = event.queryStringParameters.venue.city;
+    const daysFromNow = event.queryStringParameters.daysFromNow;
     const client_id = event.queryStringParameters.client_id;
 
 
