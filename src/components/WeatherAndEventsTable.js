@@ -21,10 +21,9 @@ import {
 const WeatherEventsTable = () => {
     const [eventsWithWeather, setEventsWithWeather] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const [weatherLocation, setWeatherLocation] = useState(`lat=42.3601&lon=-71.0589`); // Default location is Boston
     const [lat, setLat] = useState('42.3601');
     const [lon, setLon] = useState('-71.0589');
-    const [daysFromNow, setDaysFromNow] = useState('2 days');
+    // const [daysFromNow, setDaysFromNow] = useState('2 days');
     const [eventLocation, setEventLocation] = useState('boston');
     const [clickedLocationButton, setClickedLocationButton] = useState('boston');
     const [clickedRangeButton, setClickedRangeButton] = useState('2 Days');
@@ -98,10 +97,9 @@ const WeatherEventsTable = () => {
         let daysFromNow = formatDateRange(2);
 
         if (timeRange === '7 Days') {
-            setDaysFromNow(formatDateRange(7));
-
+            daysFromNow = formatDateRange(7);
         } else if (timeRange === '30 Days') {
-            setDaysFromNow(formatDateRange(30));
+            daysFromNow = formatDateRange(30);
         }
 
         const fetchData = async () => {
@@ -171,7 +169,7 @@ const WeatherEventsTable = () => {
         };
 
         fetchData();
-    }, [eventLocation, timeRange, bestVenues, lat, lon, daysFromNow]);
+    }, [eventLocation, timeRange, bestVenues, lat, lon]);
 
     return (
         <div>
