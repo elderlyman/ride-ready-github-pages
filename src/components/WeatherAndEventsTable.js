@@ -61,13 +61,11 @@ const WeatherEventsTable = () => {
     const handleLocationChange = (newLocation) => {
         if (newLocation === 'boston') {
             setEventLocation('boston');
-            // setWeatherLocation(`lat=42.3601&lon=-71.0589`);
             setLat('42.3601');
             setLon('-71.0589');
             setBestVenues(bestBostonVenues);
         } else if (newLocation === 'new orleans') {
             setEventLocation('new orleans');
-            // setWeatherLocation(`lat=29.9511&lon=-90.0715`);
             setLat('29.9511');
             setLon('-90.0715');
             setBestVenues(bestNewOrleansVenues);
@@ -92,6 +90,8 @@ const WeatherEventsTable = () => {
             const ss = date.getSeconds().toString().padStart(2, '0');
             return `${yyyy}-${mm}-${dd}T${hh}:${minutes}:${ss}`;
         };
+
+        //fix this.  it's not getting set properly.
 
         let daysFromNow = formatDateRange(2);
 
