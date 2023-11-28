@@ -1,6 +1,7 @@
 {
   "name": "ride-ready-github-pages",
   "version": "0.1.0",
+  "homepage": "https://elderlyman.github.io/ride-ready-github-pages/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
