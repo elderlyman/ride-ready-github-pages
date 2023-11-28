@@ -144,7 +144,9 @@ const WeatherEventsTable = () => {
                 const seatGeekData = data[1];
 
                 const futureEvents = seatGeekData.events.filter(
-                    (event) => new Date(event.datetime_local) > new Date()
+                    (event) =>
+                        new Date(event.datetime_local) > new Date() &&
+                        bestVenues.includes(event.venue.name)
                 );
 
                 const eventsWithWeather = futureEvents.map((event) => {
@@ -196,6 +198,16 @@ const WeatherEventsTable = () => {
                         }}
                     >
                         New Orleans
+                    </Button>
+                    <Button
+                        onClick={() => handleTimeRangeChange('2 Days')}
+                        style={{
+                            borderColor: clickedRangeButton === '2 Days' ? 'red' : 'transparent',
+                            borderWidth: '2px',
+                            color: clickedRangeButton === '2 Days' ? 'red' : 'blue',
+                        }}
+                    >
+                        2 Days
                     </Button>
                     <Button
                         onClick={() => handleTimeRangeChange('7 Days')}
