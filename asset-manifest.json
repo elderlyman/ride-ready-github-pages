@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ride-ready-github-pages/static/css/main.57c61fe7.css",
+    "main.js": "/ride-ready-github-pages/static/js/main.988273ab.js",
+    "static/js/787.645a8f60.chunk.js": "/ride-ready-github-pages/static/js/787.645a8f60.chunk.js",
+    "index.html": "/ride-ready-github-pages/index.html",
+    "main.57c61fe7.css.map": "/ride-ready-github-pages/static/css/main.57c61fe7.css.map",
+    "main.988273ab.js.map": "/ride-ready-github-pages/static/js/main.988273ab.js.map",
+    "787.645a8f60.chunk.js.map": "/ride-ready-github-pages/static/js/787.645a8f60.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.57c61fe7.css",
+    "static/js/main.988273ab.js"
+  ]
+}
